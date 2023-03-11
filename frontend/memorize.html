@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memorize Words</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<h1 >Memorize Words</h1>
+<style>
+    /*.hidden {*/
+    /*    display: none;*/
+    /*}*/
+
+    button {
+        background-color: darkorange;
+        color: black;
+        font-size: 16px;
+        font-family: Tahoma;
+        font-weight: bold;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+
+    .label {
+        grid-column: 1;
+        font-weight: bold;
+        font-family: Tahoma;
+    }
+
+    .value {
+        color: darkslategray;
+        font-family: Tahoma;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    #timer {
+        position: absolute;
+        /*top: 50%;*/
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+</style>
+<div id="starter">
+    <button id="start-button" onclick="startTest()">START</button>
+    <br>
+    <br>
+    <div id="timer" class="value">You have 2 minutes after click on START to memorize the words</div>
+    <br>
+    <br>
+</div>
+<div id="word-list" style="columns: 3; font-size: 24px;"></div>
+
+<div id="answer-form">
+    <div style="font-size: 22px; font-family: Tahoma">Enter your answer separated by space</div>
+    <textarea id="answer" name="answer" rows="10" cols="50" style="font-size: 18px;"></textarea>
+    <br>
+    <button id="submit-answer">Submit Answer</button>
+</div>
+<div id="result">
+    <div class="grid-container">
+        <div class="label">Amount of correct words:</div>
+        <div class="value" id="correct-words-num">0</div>
+        <div class="label">Correct words:</div>
+        <div class="value" id="correct-words">--</div>
+        <div class="label">Test set:</div>
+        <div class="value" id="test-set">--</div>
+        <div class="label">Time:</div>
+        <div class="value" id="time">--</div>
+    </div>
+    <br>
+    <br>
+
+    <button id="save-result" onclick="saveResult()" style="background: cornflowerblue">Save Result</button>
+
+</div>
+
+
+<script>
+    window.onload = function () {
+        document.getElementById("answer-form").style.display = "none";
+        document.getElementById("result").style.display = "none";
+    };
+
+    let testSet = [];
+    let answerWords = [];
+    let correctWords = [];
+    let correctCount = 0;
+    const tL = 120000;
+    const num = 20; // or any other value
+
+    const wordList = document.getElementById("word-list");
+    var duration, startTime, endTime;
+    var submitButton = document.getElementById("submit-answer");
+    var answerForm = document.getElementById("answer-form");
+    var answerInput = document.getElementById("answer");//
+    var wordsDiv = document.getElementById("test-set");
+    var wordsCorrect = document.getElementById("correct-words");
+    var CWN = document.getElementById("correct-words-num");
+
+
+    function startTest() {
+        answerForm.hidden = true
+        document.getElementById("timer").innerHTML = "Time remaining: 2:00"
+        let words = [];
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/private/memorize/start/" + num);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        console.log("Before onload");
+
+        xhr.onload = () => {
+            console.log("Inside onload", xhr.status);
+            if (xhr.status === 200) {
+                words = JSON.parse(xhr.response);
+                words.forEach((word) => {
+                    const wordDiv = document.createElement("div");
+                    wordDiv.textContent = word;
+                    wordList.appendChild(wordDiv);
+                    testSet.push(word); // Push each word request into the array
+                });
+            } else {
+                console.error("Error fetching words:", xhr.status);
+            }
+        };
+
+        xhr.send();
+
+        timer()
+
+        setTimeout(function () {
+            wordList.innerHTML = ""
+            answerForm.style.display = "block"
+            startTime = new Date();
+        }, tL);
+    };
+
+    function timer() {
+        // Set the time limit to 2 minutes (in seconds)
+        var timeLimit = tL / 1000;
+
+        // Get the timer element
+        var timer = document.getElementById("timer");
+
+        // Update the timer every second
+        var countdown = setInterval(function () {
+            // Calculate the minutes and seconds
+            var minutes = Math.floor(timeLimit / 60);
+            var seconds = timeLimit - minutes * 60;
+
+            // Display the timer
+            timer.innerHTML = "Time remaining: " + minutes + ":" + seconds.toLocaleString('en-US', {minimumIntegerDigits: 2});
+
+            // Decrement the time limit
+            timeLimit--;
+
+            // Stop the timer when the time limit reaches 0
+            if (timeLimit <= 0) {
+                clearInterval(countdown);
+                timer.innerHTML = "Now trie to remind memorized words. Time is not limited";
+            }
+        }, 1000); // 1000 milliseconds = 1 second
+    }
+
+    submitButton.addEventListener("click", () => {
+        document.getElementById("starter").hidden = true
+
+        endTime = new Date();
+        duration = Math.floor((endTime - startTime) / 1000);
+        answerWords = answerInput.value.split(" ");
+        answerInput.value = ""
+
+        for (var i = 0; i < answerWords.length; i++) {
+            var answer = answerWords[i].trim();
+            for (var j = 0; j < testSet.length; j++) {
+                var word = testSet[j];
+                if (answer === word) {
+                    correctWords.push(word)
+                    break;
+                }
+            }
+        }
+
+        correctCount = 0;
+
+        answerForm.style.display = "none"
+
+        document.getElementById("result").style.display = "block";
+
+        document.getElementById("time").innerHTML = duration
+
+        wordsDiv.style.whiteSpace = "pre-wrap"; // Preserve line breaks
+        const wordsHtml = testSet.map(word => word + "<br>").join("");
+        wordsDiv.innerHTML = wordsHtml;
+
+        wordsCorrect.style.whiteSpace = "pre-wrap"; // Preserve line breaks
+        const wordsHtmlCorW = correctWords.map(word => word + "<br>").join("");
+        wordsCorrect.innerHTML = wordsHtmlCorW;
+
+        CWN.innerHTML = correctWords.length
+
+
+    });
+
+    function saveResult() {
+
+        fetch("/private/memorize/results", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                duration: duration,
+                correct: correctWords.length,
+                results: correctWords,
+                test_set: testSet,
+                num_set: num,
+            })
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert(`Your results are successfully saved`);
+                } else {
+                    alert(`Anything wrong occurred. Try again`);
+                    // throw new Error('Network response was not ok');
+                    return;
+                }
+            })
+        location.reload();
+    }
+
+</script>
+</body>
+</html>

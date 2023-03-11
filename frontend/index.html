@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.18.2.min.js"></script>
+</head>
+<style>
+    button {
+        background-color: darkorange;
+        color: black;
+        font-size: 16px;
+        font-family: Tahoma;
+        font-weight: bold;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .label {
+
+        font-weight: bold;
+        font-family: Tahoma;
+    }
+</style>
+<body>
+
+<div class="fixed-top d-flex justify-content-end">
+
+    <div class="text-right">
+        <div class="d-flex align-items-center">
+            <h3 class="me-2" id="logUserName">Hello, </h3>
+        </div>
+        <div class="fixed-top d-flex justify-content-end">
+            <button type="button" id="loginButton" data-toggle="modal" data-target="#loginModal"
+                    style="background: cornflowerblue">Log In
+            </button>
+            <button type="button" id="regButton" data-toggle="modal" data-target="#regModal"
+                    style="background: cornflowerblue">Reg In
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Welcome to the Majkl's Brain Training</h1>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <button type="button" id="toShultePage" hidden onclick="window.location.href='/private/shulte'">Shulte
+            </button>
+            <button type="button" id="toArithmetic" hidden onclick="window.location.href='/private/arithmetic'">
+                Arithmetics
+            </button>
+            <button type="button" id="toMemorize" hidden onclick="window.location.href='/private/memorize'">Memorize
+            </button>
+            <button type="button" id="toResults" hidden onclick="window.location.href='/private/results'">Memorize
+            </button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Log In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal">
+
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="text" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Log In</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="regModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="regModalLabel">Registration</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-4">
+                            <h2 class="text-center mb-4">Register</h2>
+                            <form id="regForm">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="uname" placeholder="Name" required>
+                                    <label for="uname">Name</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="reg_email" placeholder="Email"
+                                           required>
+                                    <label for="email">Email address</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="reg_password" placeholder="Password"
+                                           required>
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                           placeholder="Confirm Password" required>
+                                    <label for="confirmPassword">Confirm Password</label>
+                                </div>
+                                <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div id="myDiv"></div>
+<br>
+<div id="myAri"></div>
+<br>
+<div id="myMem"></div>
+
+</body>
+<script>
+    if (document.cookie.includes("brainTrainApp")) {
+        document.getElementById("toShultePage").hidden = false
+        document.getElementById("toArithmetic").hidden = false
+        document.getElementById("toMemorize").hidden = false
+        // document.getElementById("loginButton").hidden = true
+        whoami()
+    }
+
+    const form = document.getElementById("login-form");
+    const modal = document.getElementById("loginModal");
+
+    const regForm = document.getElementById("regForm");
+    const regModal = document.getElementById("regModal");
+
+
+    function whoami() {
+        fetch("/private/whoami", {
+            method: "GET"
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // Parse response as JSON data
+            })
+            .then(data => {
+                document.getElementById("logUserName").innerHTML = "Hello, " + data.username;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+    }
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        const data = {
+            email: email,
+            password: password,
+        };
+
+        fetch("/sessions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                document.getElementById("toShultePage").hidden = false
+                document.getElementById("toArithmetic").hidden = false
+                document.getElementById("toMemorize").hidden = false
+                document.getElementById("loginButton").hidden = true
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => console.error(error));
+
+        location.reload();
+    });
+
+    regForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const data = {
+            username: document.getElementById("uname").value,
+            email: document.getElementById("reg_email").value,
+            password: document.getElementById("reg_password").value
+        };
+        // console.log(data);
+        fetch("/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then(response => {
+            if (!response.ok) {
+                return response.json().then(error => {
+                    throw new Error(`Network response was not ok - ${error.error}`);
+                });
+            }
+            return response.json();
+
+        })
+            .then(user => {
+                // user = JSON.parse(response);
+                alert(`Your user ${user.username} successfully registered. Now you should login to enter in the training system`);
+            })
+        // .catch(error => console.error(error))
+
+
+        location.reload();
+    });
+</script>
+<script>
+    let results = [];
+    let groupedResults;
+    fetch("/private/display", {
+        method: "GET"
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    }).then(data => {
+        results = data;
+        // do something with results here
+        groupedResults = results.reduce((acc, res) => {
+            if (!acc[res.test_id]) {
+                acc[res.test_id] = [];
+            }
+            acc[res.test_id].push(res);
+            return acc;
+        }, {});
+
+        chartsShulte(groupedResults);
+
+        chartsArithmetic(groupedResults);
+
+        chartsMemorize(groupedResults)
+    }).catch(error => {
+        console.error('Error:', error);
+
+    });
+
+    function chartsShulte(groupedResults) {
+        const testId = 1;
+        const filteredResults = groupedResults[testId].filter(res => res.results !== null);
+
+        const dataByDate = {};
+        filteredResults.forEach(res => {
+            const dateString = new Date(res.date_test.replace(' ', 'T')).toDateString();
+            if (!dataByDate[dateString]) {
+                dataByDate[dateString] = [];
+            }
+            const resultsArray = res.results.split(' ').map(time => {
+                const [minutes, seconds] = time.split(':');
+                return (parseInt(minutes) * 60) + parseInt(seconds);
+            });
+            dataByDate[dateString].push(resultsArray);
+        });
+
+        const traces = [];
+        for (const dateString in dataByDate) {
+            const resultsArray = dataByDate[dateString];
+            const trace = {
+                y: resultsArray.flat(),
+                type: 'box',
+                name: dateString
+            };
+            traces.push(trace);
+        }
+
+        const layout ={
+            title: "Diagram Test of Shulte's Tables",
+            yaxis:{
+                title: 'Second for test'
+            }
+        }
+
+        Plotly.newPlot('myDiv', traces, layout);
+    }
+
+    function chartsArithmetic(groupedResults) {
+        const testId = 2;
+        const filteredResults = groupedResults[testId].filter(res => res.results !== null);
+        const dataByDate = {};
+        const xValues = [];
+        const y1Values = [];
+        const y2Values = [];
+        var resultFail;
+        var expressions;
+        filteredResults.forEach(res => {
+            const dateString = new Date(res.date_test.replace(' ', 'T')).toDateString();
+            if (!dataByDate[dateString]) {
+                dataByDate[dateString] = [];
+            }
+
+            xValues.push(dateString);
+
+            y1Values.push(res.result_inter);
+
+            resultFail = res.result_one;
+            expressions = res.result_two;
+
+            y2Values.push(Math.round(resultFail/expressions*100));
+        });
+
+
+        const trace1 = {
+            x: xValues,
+            y: y1Values,
+            type: 'scatter',
+            name: 'Seconds for test',
+            yaxis: 'y1' // use y1 axis
+        };
+
+
+        const trace2 = {
+            x: xValues,
+            y: y2Values,
+            type: 'scatter',
+            name: '% of fails',
+            yaxis: 'y2' // use y2 axis
+        };
+
+        const layout = {
+            title: 'Diagram Test of Arithmetic',
+            yaxis: {
+                title: 'Seconds for test',
+                titlefont: {color: 'blue'},
+                tickfont: {color: 'blue'}
+            },
+            yaxis2: {
+                title: '% of fails',
+                titlefont: {color: 'orange'},
+                tickfont: {color: 'orange'},
+                overlaying: 'y', // align with y axis
+                side: 'right' // position on the right
+            }
+        };
+
+        const data = [trace1, trace2];
+
+        Plotly.newPlot('myAri', data, layout);
+    }
+
+    function chartsMemorize(groupedResults) {
+        const testId = 3;
+        const filteredResults = groupedResults[testId].filter(res => res.results !== null);
+        const dataByDate = {};
+        const xValues = [];
+        const y1Values = [];
+        const y2Values = [];
+        var resultFail;
+        var expressions;
+        filteredResults.forEach(res => {
+            const dateString = new Date(res.date_test.replace(' ', 'T')).toDateString();
+            if (!dataByDate[dateString]) {
+                dataByDate[dateString] = [];
+            }
+
+            xValues.push(dateString);
+
+            y1Values.push(res.result_inter);
+
+            y2Values.push(res.result_one);
+        });
+
+
+        const trace1 = {
+            x: xValues,
+            y: y1Values,
+            type: 'scatter',
+            name: 'Seconds for test',
+            yaxis: 'y1', // use y1 axis
+            marker:{
+                color:'green'
+            }
+        };
+
+
+        const trace2 = {
+            x: xValues,
+            y: y2Values,
+            type: 'scatter',
+            name: 'Amount of memorized words',
+            yaxis: 'y2',// use y2 axis
+            marker:{
+                color:'violet'
+            }
+        };
+
+        const layout = {
+            title: 'Diagram Test of Memorize',
+            yaxis: {
+                title: 'Seconds for test',
+                titlefont: {color: 'green'},
+                tickfont: {color: 'green'},
+            },
+            yaxis2: {
+                title: 'Amount of memorized words',
+                titlefont: {color: 'violet'},
+                tickfont: {color: 'violet'},
+                overlaying: 'y', // align with y axis
+                side: 'right' // position on the right
+            }
+        };
+
+        const data = [trace1, trace2];
+
+        Plotly.newPlot('myMem', data, layout);
+    }
+</script>
+</html>

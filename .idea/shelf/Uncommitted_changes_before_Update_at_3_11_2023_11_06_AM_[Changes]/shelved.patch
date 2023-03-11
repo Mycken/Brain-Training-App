@@ -1,0 +1,203 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"dcf84392-aca2-4ea5-8aea-dea1598e0f93\" name=\"Changes\" comment=\"Initial commit\">\r\n      <change afterPath=\"$PROJECT_DIR$/[table_name].sql\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/apiserver.exe\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/cmd/apiserver/go_build_BrainTApp.exe\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/frontend/results.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/frontend/tablesShulte.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/frontend/utilities/plotly-2.18.2.min.js\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/go_build_BrainTApp_cmd_apiserver.exe\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/apiserver/responsewriter.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/apiserver/server.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/apiserver/server_internal_test.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/errors.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/repositories.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/sqlstore/resultrepository.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/sqlstore/store.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/sqlstore/store_test.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/sqlstore/testing.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/sqlstore/userrepository.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/sqlstore/userrepository_test.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/stores.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/teststore/store.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/teststore/userrepository.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/bta/store/teststore/userrepository_test.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/model/entity/result.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/model/entity/testing.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/model/entity/user.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/model/user_test.go\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/internal/model/validations.go\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/sqldialects.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/sqldialects.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Makefile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Makefile\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/cmd/apiserver/main.go\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/cmd/apiserver/main.go\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/configs/apiserver.toml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/configs/apiserver.toml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/Arithmetic.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/arithmetic.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/TablesSh.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/dashboard.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/dashboard.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/index.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/memorize.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/memorize.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/go.mod\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/go.mod\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/go.sum\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/go.sum\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/internal/bta/apiserver/apiserver.go\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/internal/bta/apiserver/apiserver.go\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/internal/bta/apiserver/config.go\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/internal/bta/apiserver/config.go\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/internal/bta/entity/strutrures.go\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/main_old/controller.go\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/sql/BTA_create.sql\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/migrations/BTA_create.sql\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/sql/BTA_create_rollback.sql\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/migrations/BTA_create_rollback.sql\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/sql/DataSet.sql\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/migrations/DataSet.sql\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/sql/DataSet_rollback.sql\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/migrations/DataSet_rollback.sql\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/store/config.go\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/store/store.go\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"HTML File\" />\r\n        <option value=\"Go File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"GOROOT\" url=\"file://$PROJECT_DIR$/../../../../Program Files/Go\" />\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2LrUmmMJXY6hGe062OC0SF2wJGr\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"DefaultGoTemplateProperty\": \"Go File\",\r\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.go.format.on.save.advertiser.fired\": \"true\",\r\n    \"RunOnceActivity.go.formatter.settings.were.checked\": \"true\",\r\n    \"RunOnceActivity.go.migrated.go.modules.settings\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"configurable..is.expanded\": \"false\",\r\n    \"configurable.GoLibrariesConfigurable.is.expanded\": \"true\",\r\n    \"go.import.settings.migrated\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/MNenashev/IdeaProjects/BrainTApp/frontend\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Project\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.21777777\",\r\n    \"settings.editor.selected.configurable\": \"dlv.dataViews\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"DatabaseDriversLRU\": [\r\n      \"postgresql\"\r\n    ],\r\n    \"RunConfigurationTargetLRU\": [\r\n      \"864d5900-acab-4f37-97f9-15fff6cbf3e6/database/\\\"bta\\\"/schema/\\\"public\\\"\",\r\n      \"864d5900-acab-4f37-97f9-15fff6cbf3e6/database/\\\"bta\\\"\",\r\n      \"864d5900-acab-4f37-97f9-15fff6cbf3e6\",\r\n      \"29c14b48-a4a9-4e53-92bd-1b31aa01fec2\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\MNenashev\\IdeaProjects\\BrainTApp\\frontend\" />\r\n      <recent name=\"C:\\Users\\MNenashev\\IdeaProjects\\BrainTApp\\internal\\bta\\store\\teststore\" />\r\n      <recent name=\"C:\\Users\\MNenashev\\IdeaProjects\\BrainTApp\\DB\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\MNenashev\\IdeaProjects\\BrainTApp\\frontend\\utilities\" />\r\n      <recent name=\"C:\\Users\\MNenashev\\IdeaProjects\\BrainTApp\\frontend\" />\r\n      <recent name=\"C:\\Users\\MNenashev\\IdeaProjects\\BrainTApp\\internal\\model\\entity\" />\r\n      <recent name=\"C:\\Users\\MNenashev\\IdeaProjects\\BrainTApp\\internal\\bta\\store\" />\r\n      <recent name=\"C:\\Users\\MNenashev\\IdeaProjects\\BrainTApp\\internal\\bta\\store\\sqlstore\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Go Build.go build BrainTApp/cmd/apiserver\">\r\n    <configuration default=\"true\" type=\"GoApplicationRunConfiguration\" factoryName=\"Go Application\">\r\n      <module name=\"BrainTApp\" />\r\n      <working_directory value=\"$PROJECT_DIR$\" />\r\n      <kind value=\"FILE\" />\r\n      <directory value=\"$PROJECT_DIR$\" />\r\n      <filePath value=\"$PROJECT_DIR$\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"go build BrainTApp/cmd/apiserver\" type=\"GoApplicationRunConfiguration\" factoryName=\"Go Application\" nameIsGenerated=\"true\">\r\n      <module name=\"BrainTApp\" />\r\n      <working_directory value=\"$PROJECT_DIR$\" />\r\n      <kind value=\"DIRECTORY\" />\r\n      <package value=\"BrainTApp\" />\r\n      <directory value=\"$PROJECT_DIR$/cmd/apiserver\" />\r\n      <filePath value=\"$PROJECT_DIR$\" />\r\n      <output_directory value=\"$PROJECT_DIR$/\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"TestServer_AuthenticateUser in BrainTApp/internal/bta/apiserver\" type=\"GoTestRunConfiguration\" factoryName=\"Go Test\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BrainTApp\" />\r\n      <working_directory value=\"$PROJECT_DIR$/internal/bta/apiserver\" />\r\n      <root_directory value=\"$PROJECT_DIR$\" />\r\n      <kind value=\"PACKAGE\" />\r\n      <package value=\"BrainTApp/internal/bta/apiserver\" />\r\n      <directory value=\"$PROJECT_DIR$\" />\r\n      <filePath value=\"$PROJECT_DIR$\" />\r\n      <framework value=\"gotest\" />\r\n      <pattern value=\"^\\QTestServer_AuthenticateUser\\E$\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"TestServer_AuthenticateUser/not_authenticated in BrainTApp/internal/bta/apiserver\" type=\"GoTestRunConfiguration\" factoryName=\"Go Test\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BrainTApp\" />\r\n      <working_directory value=\"$PROJECT_DIR$/internal/bta/apiserver\" />\r\n      <root_directory value=\"$PROJECT_DIR$\" />\r\n      <kind value=\"PACKAGE\" />\r\n      <package value=\"BrainTApp/internal/bta/apiserver\" />\r\n      <directory value=\"$PROJECT_DIR$\" />\r\n      <filePath value=\"$PROJECT_DIR$\" />\r\n      <framework value=\"gotest\" />\r\n      <pattern value=\"^\\QTestServer_AuthenticateUser\\E$/^\\Qnot_authenticated\\E$\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"TestServer_AuthenticateUser/unauthenticated in BrainTApp/internal/bta/apiserver\" type=\"GoTestRunConfiguration\" factoryName=\"Go Test\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BrainTApp\" />\r\n      <working_directory value=\"$PROJECT_DIR$/internal/bta/apiserver\" />\r\n      <root_directory value=\"$PROJECT_DIR$\" />\r\n      <kind value=\"PACKAGE\" />\r\n      <package value=\"BrainTApp/internal/bta/apiserver\" />\r\n      <directory value=\"$PROJECT_DIR$\" />\r\n      <filePath value=\"$PROJECT_DIR$\" />\r\n      <framework value=\"gotest\" />\r\n      <pattern value=\"^\\QTestServer_AuthenticateUser\\E$/^\\Qunauthenticated\\E$\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"GoTestRunConfiguration\" factoryName=\"Go Test\">\r\n      <module name=\"BrainTApp\" />\r\n      <working_directory value=\"$PROJECT_DIR$\" />\r\n      <kind value=\"DIRECTORY\" />\r\n      <directory value=\"$PROJECT_DIR$\" />\r\n      <filePath value=\"$PROJECT_DIR$\" />\r\n      <framework value=\"gotest\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"go test BrainTApp/internal/bta/apiserver\" type=\"GoTestRunConfiguration\" factoryName=\"Go Test\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BrainTApp\" />\r\n      <working_directory value=\"$PROJECT_DIR$/internal/bta/apiserver\" />\r\n      <root_directory value=\"$PROJECT_DIR$\" />\r\n      <kind value=\"PACKAGE\" />\r\n      <package value=\"BrainTApp/internal/bta/apiserver\" />\r\n      <directory value=\"$PROJECT_DIR$\" />\r\n      <filePath value=\"$PROJECT_DIR$\" />\r\n      <framework value=\"gotest\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"go test BrainTApp/internal/bta/store/teststore\" type=\"GoTestRunConfiguration\" factoryName=\"Go Test\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BrainTApp\" />\r\n      <working_directory value=\"$PROJECT_DIR$/internal/bta/store/teststore\" />\r\n      <root_directory value=\"$PROJECT_DIR$\" />\r\n      <kind value=\"PACKAGE\" />\r\n      <package value=\"BrainTApp/internal/bta/store/teststore\" />\r\n      <directory value=\"$PROJECT_DIR$\" />\r\n      <filePath value=\"$PROJECT_DIR$\" />\r\n      <framework value=\"gotest\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Go Build.go build BrainTApp/cmd/apiserver\" />\r\n      <item itemvalue=\"Go Test.go test BrainTApp/internal/bta/apiserver\" />\r\n      <item itemvalue=\"Go Test.go test BrainTApp/internal/bta/store/teststore\" />\r\n      <item itemvalue=\"Go Test.TestServer_AuthenticateUser/not_authenticated in BrainTApp/internal/bta/apiserver\" />\r\n      <item itemvalue=\"Go Test.TestServer_AuthenticateUser/unauthenticated in BrainTApp/internal/bta/apiserver\" />\r\n      <item itemvalue=\"Go Test.TestServer_AuthenticateUser in BrainTApp/internal/bta/apiserver\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Go Test.TestServer_AuthenticateUser/not_authenticated in BrainTApp/internal/bta/apiserver\" />\r\n        <item itemvalue=\"Go Test.TestServer_AuthenticateUser in BrainTApp/internal/bta/apiserver\" />\r\n        <item itemvalue=\"Go Test.go test BrainTApp/internal/bta/apiserver\" />\r\n        <item itemvalue=\"Go Test.TestServer_AuthenticateUser/unauthenticated in BrainTApp/internal/bta/apiserver\" />\r\n        <item itemvalue=\"Go Test.go test BrainTApp/internal/bta/store/teststore\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"dcf84392-aca2-4ea5-8aea-dea1598e0f93\" name=\"Changes\" comment=\"\" />\r\n      <created>1676628859972</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1676628859972</updated>\r\n      <workItem from=\"1676628861409\" duration=\"21498000\" />\r\n      <workItem from=\"1676656346421\" duration=\"6753000\" />\r\n      <workItem from=\"1676665147544\" duration=\"35395000\" />\r\n      <workItem from=\"1676833210007\" duration=\"525000\" />\r\n      <workItem from=\"1676833756061\" duration=\"422000\" />\r\n      <workItem from=\"1676834387737\" duration=\"18592000\" />\r\n      <workItem from=\"1677015443509\" duration=\"6729000\" />\r\n      <workItem from=\"1677088634472\" duration=\"1034000\" />\r\n      <workItem from=\"1677089677079\" duration=\"17204000\" />\r\n      <workItem from=\"1677166685592\" duration=\"8479000\" />\r\n      <workItem from=\"1677175190166\" duration=\"10881000\" />\r\n      <workItem from=\"1677230332241\" duration=\"83124000\" />\r\n      <workItem from=\"1677923357790\" duration=\"45034000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial commit\">\r\n      <created>1677016315581</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1677016315581</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"Initial commit\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Initial commit\" />\r\n  </component>\r\n  <component name=\"VgoProject\">\r\n    <settings-migrated>true</settings-migrated>\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"DlvLineBreakpoint\">\r\n          <url>file://$PROJECT_DIR$/internal/bta/apiserver/server.go</url>\r\n          <line>335</line>\r\n          <option name=\"timeStamp\" value=\"22\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"javascript\">\r\n          <url>file://$PROJECT_DIR$/frontend/memorize.html</url>\r\n          <line>136</line>\r\n          <option name=\"timeStamp\" value=\"18\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 5860c39f4a874d2574475f7dc35f3126f8777951)
++++ b/.idea/workspace.xml	(date 1678528932483)
+@@ -5,56 +5,7 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="dcf84392-aca2-4ea5-8aea-dea1598e0f93" name="Changes" comment="Initial commit">
+-      <change afterPath="$PROJECT_DIR$/[table_name].sql" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/apiserver.exe" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/cmd/apiserver/go_build_BrainTApp.exe" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/frontend/results.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/frontend/tablesShulte.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/frontend/utilities/plotly-2.18.2.min.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/go_build_BrainTApp_cmd_apiserver.exe" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/apiserver/responsewriter.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/apiserver/server.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/apiserver/server_internal_test.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/errors.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/repositories.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/sqlstore/resultrepository.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/sqlstore/store.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/sqlstore/store_test.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/sqlstore/testing.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/sqlstore/userrepository.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/sqlstore/userrepository_test.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/stores.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/teststore/store.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/teststore/userrepository.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/bta/store/teststore/userrepository_test.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/model/entity/result.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/model/entity/testing.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/model/entity/user.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/model/user_test.go" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/internal/model/validations.go" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/cmd/apiserver/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/apiserver/main.go" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/configs/apiserver.toml" beforeDir="false" afterPath="$PROJECT_DIR$/configs/apiserver.toml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/Arithmetic.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/arithmetic.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/TablesSh.html" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dashboard.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/memorize.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/memorize.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/internal/bta/apiserver/apiserver.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/bta/apiserver/apiserver.go" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/internal/bta/apiserver/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/bta/apiserver/config.go" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/internal/bta/entity/strutrures.go" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/main_old/controller.go" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/sql/BTA_create.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/BTA_create.sql" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/sql/BTA_create_rollback.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/BTA_create_rollback.sql" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/sql/DataSet.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/DataSet.sql" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/sql/DataSet_rollback.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/DataSet_rollback.sql" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/store/config.go" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/store/store.go" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -71,6 +22,11 @@
+   </component>
+   <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../Program Files/Go" />
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="master" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+@@ -99,7 +55,7 @@
+     "configurable..is.expanded": "false",
+     "configurable.GoLibrariesConfigurable.is.expanded": "true",
+     "go.import.settings.migrated": "true",
+-    "last_opened_file_path": "C:/Users/MNenashev/IdeaProjects/BrainTApp/frontend",
++    "last_opened_file_path": "C:/Users/MNenashev/IdeaProjects/BrainTApp/internal/bta/store/teststore",
+     "nodejs_package_manager_path": "npm",
+     "project.structure.last.edited": "Project",
+     "project.structure.proportion": "0.15",
+@@ -120,8 +76,8 @@
+ }]]></component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\MNenashev\IdeaProjects\BrainTApp\internal\bta\store\teststore" />
+       <recent name="C:\Users\MNenashev\IdeaProjects\BrainTApp\frontend" />
+-      <recent name="C:\Users\MNenashev\IdeaProjects\BrainTApp\internal\bta\store\teststore" />
+       <recent name="C:\Users\MNenashev\IdeaProjects\BrainTApp\DB" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
+@@ -133,14 +89,6 @@
+     </key>
+   </component>
+   <component name="RunManager" selected="Go Build.go build BrainTApp/cmd/apiserver">
+-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+-      <module name="BrainTApp" />
+-      <working_directory value="$PROJECT_DIR$" />
+-      <kind value="FILE" />
+-      <directory value="$PROJECT_DIR$" />
+-      <filePath value="$PROJECT_DIR$" />
+-      <method v="2" />
+-    </configuration>
+     <configuration name="go build BrainTApp/cmd/apiserver" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+       <module name="BrainTApp" />
+       <working_directory value="$PROJECT_DIR$" />
+@@ -187,15 +135,6 @@
+       <pattern value="^\QTestServer_AuthenticateUser\E$/^\Qunauthenticated\E$" />
+       <method v="2" />
+     </configuration>
+-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+-      <module name="BrainTApp" />
+-      <working_directory value="$PROJECT_DIR$" />
+-      <kind value="DIRECTORY" />
+-      <directory value="$PROJECT_DIR$" />
+-      <filePath value="$PROJECT_DIR$" />
+-      <framework value="gotest" />
+-      <method v="2" />
+-    </configuration>
+     <configuration name="go test BrainTApp/internal/bta/apiserver" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+       <module name="BrainTApp" />
+       <working_directory value="$PROJECT_DIR$/internal/bta/apiserver" />
+@@ -228,11 +167,11 @@
+     </list>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Go Test.TestServer_AuthenticateUser/not_authenticated in BrainTApp/internal/bta/apiserver" />
+         <item itemvalue="Go Test.TestServer_AuthenticateUser in BrainTApp/internal/bta/apiserver" />
+-        <item itemvalue="Go Test.go test BrainTApp/internal/bta/apiserver" />
+         <item itemvalue="Go Test.TestServer_AuthenticateUser/unauthenticated in BrainTApp/internal/bta/apiserver" />
++        <item itemvalue="Go Test.TestServer_AuthenticateUser/not_authenticated in BrainTApp/internal/bta/apiserver" />
+         <item itemvalue="Go Test.go test BrainTApp/internal/bta/store/teststore" />
++        <item itemvalue="Go Test.go test BrainTApp/internal/bta/apiserver" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -257,6 +196,7 @@
+       <workItem from="1677175190166" duration="10881000" />
+       <workItem from="1677230332241" duration="83124000" />
+       <workItem from="1677923357790" duration="45034000" />
++      <workItem from="1678525120309" duration="3318000" />
+     </task>
+     <task id="LOCAL-00001" summary="Initial commit">
+       <created>1677016315581</created>
+@@ -265,7 +205,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1677016315581</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Initial commit">
++      <created>1678526553727</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1678526553727</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -276,7 +223,34 @@
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State />
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="origin/master" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
++          </value>
++        </entry>
++      </map>
++    </option>
++    <option name="RECENT_FILTERS">
++      <map>
++        <entry key="Branch">
++          <value>
++            <list>
++              <RecentGroup>
++                <option name="FILTER_VALUES">
++                  <option value="origin/master" />
++                </option>
++              </RecentGroup>
++            </list>
+           </value>
+         </entry>
+       </map>

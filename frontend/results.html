@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--    https://plotly.com/javascript/box-plots/#basic-box-plot-->
+    <meta charset="utf-8"/>
+    <title>Box Plot</title>
+    <script src="https://cdn.plot.ly/plotly-2.18.2.min.js"></script>
+    ></script>
+</head>
+<body>
+<div id="myDiv"></div>
+<div id="boxplotContainer"></div>
+<script>
+   let results = [
+        {
+            user_id: 1,
+            test_id: 1,
+            date_test: "2022-03-05",
+            result_inter: "2m30s",
+            result_one: 10,
+            result_two: 20,
+            results: "A B C",
+            test_set: "X Y Z"
+        },
+        {
+            user_id: 1,
+            test_id: 1,
+            date_test: "2022-03-06",
+            result_inter: "2m40s",
+            result_one: 15,
+            result_two: 25,
+            results: "A B D",
+            test_set: "X Y Z"
+        },
+        {
+            user_id: 1,
+            test_id: 2,
+            date_test: "2022-03-05",
+            result_inter: "1m30s",
+            result_one: 5,
+            result_two: 10,
+            results: "A C",
+            test_set: "X Y"
+        },
+        {
+            user_id: 1,
+            test_id: 2,
+            date_test: "2022-03-06",
+            result_inter: "1m40s",
+            result_one: 8,
+            result_two: 15,
+            results: "B D",
+            test_set: "X Y"
+        }
+    ];
+    fetch("/private/display", {
+        method: "GET"
+    }).then( response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return results = response.json();
+    });
+
+    // assuming the data is already fetched and stored in a variable `results`
+    const groupedResults = results.reduce((acc, res) => {
+        if (!acc[res.test_id]) {
+            acc[res.test_id] = [];
+        }
+        acc[res.test_id].push(res);
+        return acc;
+    }, {});
+
+    console.log(groupedResults);
+
+    const finalResult = Object.keys(groupedResults).map((testId) => {
+        const testResults = groupedResults[testId];
+        const dateGroups = testResults.reduce((acc, res) => {
+            if (!acc[res.date_test]) {
+                acc[res.date_test] = [];
+            }
+            acc[res.date_test].push(res);
+            return acc;
+        }, {});
+        return {
+            test_id: testId,
+            dates: Object.keys(dateGroups).map((date) => ({
+                date_test: date,
+                results: dateGroups[date],
+            })),
+        };
+    });
+
+    console.log(finalResult);
+</script>
+
+<script>
+    const xValues = [1, 2, 3, 4, 5];
+
+    const y1Values = [10, 20, 15, 12, 23];
+    const trace1 = {
+        x: xValues,
+        y: y1Values,
+        type: 'scatter',
+        name: 'Data Set 1',
+        yaxis: 'y1' // use y1 axis
+    };
+
+    const y2Values = [0.1, 0.2, 0.8, 0.21, -0.2];
+    const trace2 = {
+        x: xValues,
+        y: y2Values,
+        type: 'bar',
+        name: 'Data Set 2',
+        yaxis: 'y2' // use y2 axis
+    };
+
+    const layout = {
+        title: 'Two Data Sets with Independent Y Axes',
+        yaxis: {
+            title: 'Data Set 1',
+            titlefont: {color: 'blue'},
+            tickfont: {color: 'blue'}
+        },
+        yaxis2: {
+            title: 'Data Set 2',
+            titlefont: {color: 'red'},
+            tickfont: {color: 'red'},
+            overlaying: 'y', // align with y axis
+            side: 'right' // position on the right
+        }
+    };
+
+    const data = [trace1, trace2];
+
+    Plotly.newPlot('myDiv', data, layout);
+
+</script>
+</body>
+</html>

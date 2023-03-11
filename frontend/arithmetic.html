@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arithmetic Expressions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        button {
+            background-color: darkorange;
+            color: black;
+            font-size: 16px;
+            font-family: Tahoma;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .value {
+            color: darkslategray;
+            font-family: Tahoma;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .label {
+            grid-column: 1;
+            font-weight: bold;
+            font-family: Tahoma;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var totalExpressions = 90;
+        var duration, startTime, endTime;
+        var currentIndex = 0;
+        var expressions = [];
+        var fails = 0;
+
+        function generateExpression() {
+            var expression, operand1, operand2, operator;
+            var operatorIndex = Math.floor(Math.random() * 4);
+
+            switch (operatorIndex) {
+                case 0: // Addition
+                    operand1 = Math.floor(Math.random() * 99) + 1;
+                    operand2 = Math.floor(Math.random() * 99) + 1;
+                    operator = "+";
+                    expression = operand1 + " " + operator + " " + operand2;
+                    break;
+                case 1: // Subtraction
+                    operand1 = Math.floor(Math.random() * 99) + 1;
+                    operand2 = Math.floor(Math.random() * 99) + 1;
+                    if (operand1 < operand2) {
+                        var temp = operand1;
+                        operand1 = operand2;
+                        operand2 = temp;
+                    }
+                    operator = "-";
+                    expression = operand1 + " " + operator + " " + operand2;
+                    break;
+                case 2: // Multiplication
+                    operand1 = Math.floor(Math.random() * 9) + 1;
+                    operand2 = Math.floor(Math.random() * 9) + 1;
+                    operator = "*";
+                    expression = operand1 + " " + operator + " " + operand2;
+                    break;
+                case 3: // Division
+                    operand2 = Math.floor(Math.random() * 9) + 1;
+                    operand1 = operand2 * (Math.floor(Math.random() * 9) + 1);
+                    operator = "/";
+                    expression = operand1 + " " + operator + " " + operand2;
+                    break;
+            }
+            expressions.push(expression);
+            document.getElementById("expression").innerHTML = expression;
+        }
+
+        function submitAnswer() {
+            var answer = document.getElementById("answer").value;
+            var expression = expressions[currentIndex];
+            var result = eval(expression);
+            currentIndex++;
+            document.getElementById("rest").innerHTML = "You're left to solve " + (totalExpressions - currentIndex).toString();
+            if (currentIndex === 1) {
+                startTime = new Date();
+            }
+            if (parseInt(answer) === result) {
+            } else {
+                fails++;
+            }
+            document.getElementById("answer").value = "";
+            if (currentIndex < totalExpressions) {
+                generateExpression();
+            } else {
+                endTime = new Date();
+                duration = Math.floor((endTime - startTime) / 1000);
+                alert("Congratulations, you completed all expressions in " + duration + " seconds with " + fails + " failures.");
+                // Save the results to the database using an AJAX call
+                saveResults(duration, fails)
+                // location.reload();
+            }
+        }
+
+        window.onload = function () {
+            document.getElementById("rest").innerHTML = "You're left to solve " + totalExpressions
+            generateExpression();
+        }
+
+        function saveResults(duration, fails) {
+            const data = {
+                duration: duration,
+                fails: fails,
+                expressions: totalExpressions
+            };
+
+            fetch("/private/arithmetic/results", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert(`Your results are successfully saved`)
+                    } else {
+                        alert(`Anything wrong occurred. Try again`)
+                        throw new Error('Network response was not ok');
+                    }
+                })
+            location.reload();
+        }
+    </script>
+
+
+</head>
+<body>
+<h1>Arithmetic Expressions</h1>
+
+<div class="label" id="rest"></div>
+<div id="expression" style="font-size: 26px;"></div>
+<input class="value" type="text" id="answer" onkeypress="if (event.keyCode == 13) submitAnswer();"/>
+<button onclick="submitAnswer()">Submit</button>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Example Chart</title>
+    <link rel="stylesheet" href="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.min.css" />
+    <style>
+        #chart {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<div id="chart"></div>
+</body>
+<script>
+
+
+
+    const data = [
+        { time: '2022-01-01', open: 123.45, high: 135.67, low: 100.23, close: 120.12 },
+        { time: '2022-01-02', open: 120.12, high: 130.34, low: 115.78, close: 128.56 },
+        { time: '2022-01-03', open: 128.56, high: 139.45, low: 127.89, close: 138.79 },
+        { time: '2022-01-04', open: 138.79, high: 144.67, low: 136.78, close: 142.56 },
+        { time: '2022-01-05', open: 142.56, high: 149.23, low: 141.12, close: 148.34 },
+        { time: '2022-01-06', open: 148.34, high: 157.89, low: 147.56, close: 155.67 },
+        { time: '2022-01-07', open: 155.67, high: 162.45, low: 152.34, close: 160.78 }];
+
+    const chart = LightweightCharts.createChart(document.getElementById('chart'), {
+        width: 600,
+        height: 300,
+        layout: {
+            backgroundColor: '#fff',
+            textColor: '#000',
+        },
+        crosshair: {
+            mode: LightweightCharts.CrosshairMode.Normal,
+        },
+        grid: {
+            vertLines: {
+                color: '#eee',
+            },
+            horzLines: {
+                color: '#eee',
+            },
+        },
+        timeScale: {
+            timeVisible: true,
+            secondsVisible: false,
+        },
+        priceScale: {
+            mode: LightweightCharts.PriceScaleMode.Normal,
+            autoScale: true,
+            invertScale: false,
+            alignLabels: true,
+            borderVisible: true,
+            borderColor: '#ccc',
+            scaleMargins: {
+                top: 0.3,
+                bottom: 0.25,
+            },
+        },
+    });
+
+    const candlestickSeries = chart.addCandlestickSeries({
+        upColor: '#00ff00',
+        downColor: '#ff0000',
+        borderUpColor: '#00ff00',
+        borderDownColor: '#ff0000',
+        wickUpColor: '#00ff00',
+        wickDownColor: '#ff0000',
+        borderColor: '#000',
+    });
+
+    candlestickSeries.setData(data);
+
+</script>
+</html>

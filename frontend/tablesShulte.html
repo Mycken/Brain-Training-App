@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table with Random Numbers</title>
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <style>
+        table {
+            width: 100%;
+            height: 90vh;
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 20%;
+            height: 18%;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 1.5vw;
+            font-weight: bold;
+            font-family: Tahoma;
+            border: 1px solid black;
+        }
+
+        button {
+            background-color: darkorange;
+            color: black;
+            font-size: 16px;
+            font-family: Tahoma;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button.stopped {
+            background-color: darkslategray;
+            color: #f2f2f2;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 50px;
+        }
+
+        .table-shulte {
+            grid-column: 1;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+        }
+
+        .label {
+            grid-column: 1;
+            font-weight: bold;
+            font-family: Tahoma;
+        }
+
+        .value {
+            color: darkslategray;
+            font-family: Tahoma;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <div class="table-shulte">
+        <table>
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+    <div class="manage">
+        <!-- HTML button element to start and stop the test -->
+        <button id="startStopButton" onclick="startStopTest()">Start Test</button>
+
+        <div class="grid-container">
+            <div class="label">Timer</div>
+            <div class="value" id="timer">00:00</div>
+            <div class="label">Test result:</div>
+            <div class="value" id="result">00:00</div>
+            <div class="label">Total result:</div>
+            <div class="value" id="result_total">00:00</div>
+        </div>
+
+        <button id="sendButton" onclick="sendResult()" hidden style="background: cornflowerblue">Save Results</button>
+
+    </div>
+</div>
+<script>
+    let flag = 0;
+    let count = 0;
+    let time = 0;
+    let start;
+    let result_total = [];
+    var startTestTime,totalTime;
+
+
+    function startStopTest() {
+
+        if (count === 0){startTestTime = new Date();}
+
+        if (flag === 0 && count <= 4) {
+            // Start the test
+            document.getElementById("startStopButton").classList.toggle('stopped')
+            count++
+            document.getElementById("timer").innerHTML = "00:00";
+            flag = 1;
+            start = new Date();
+            interval = setInterval(updateTimer, 1000);
+            fillTable();
+            document.getElementById("startStopButton").textContent = "Stop Test";
+        } else if (flag === 1 && count <= 5) {
+            // Stop the test
+            flag = 0;
+            document.getElementById("timer").innerHTML = "--:--";
+            clearInterval(interval);
+            document.getElementById("startStopButton").textContent = "Start Test";
+            document.getElementById("startStopButton").classList.toggle('stopped')
+            updateResult();
+            document.getElementById("result_total").innerHTML = result_total;
+            if (count === 5){
+                document.getElementById("sendButton").hidden = false;
+                totalTime =  Math.floor((new Date() - startTestTime) / 1000);
+                return;
+            }
+        } else if (flag === 0 & count === 5){
+            totalTime =  Math.floor((new Date() - startTestTime) / 1000);
+            // alert(`Your limit is 5 times for repeating. You've got it for ${totalTime} second`);
+            document.getElementById("sendButton").hidden = false
+
+            return;
+        }
+    }
+
+    function sendResult(res) {
+
+        const data = {
+            results: result_total,
+            duration: totalTime
+        };
+
+        fetch("/private/shulte/results", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert(`Your results ${result_total} are successfully saved`)
+                } else {
+                    alert(`Anything wrong occurred. Try again`)
+                    throw new Error('Network response was not ok');
+                }
+            })
+        count = 0
+        result_total = []
+        document.getElementById("result_total").innerHTML = "00:00";
+        document.getElementById("result").innerHTML = "00:00";
+        document.getElementById("sendButton").hidden = true
+
+    }
+
+    function updateTimer() {
+        time = new Date() - start;
+        document.getElementById("timer").innerHTML = formatTime(time / 1000);
+    }
+
+    function updateResult() {
+        const result = formatTime(time / 1000);
+        document.getElementById("result").innerHTML = result;
+        result_total.push(result)
+    }
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.round(seconds % 60);
+        return minutes.toString().padStart(2, "0") + ":" + remainingSeconds.toString().padStart(2, "0");
+    }
+
+    function fillTable() {
+        let nums = [];
+        while (nums.length < 25) {
+            let rand = Math.floor(Math.random() * 25) + 1;
+            if (!nums.includes(rand)) {
+                nums.push(rand);
+            }
+        }
+        let cells = document.getElementsByTagName('td');
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].innerHTML = "<h1>" + nums[i] + "</h1>";
+        }
+    }
+</script>
+</body>
+</html>

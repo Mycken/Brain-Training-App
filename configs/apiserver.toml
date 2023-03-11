@@ -1,0 +1,4 @@
+bind_addr = ":8085"
+log_level = "debug"
+database_url =  "host=localhost port=5432 user=postgres password=123 dbname=bta sslmode=disable"
+session_key = "U7shDRc3Jl701yvX4Vq1vLTHQdnoJh5C9Mlmppy9ybonv3kY323LqKss2nGUeZvurHlC74MFFZlRsZTP+oa2c97PEN+ea8Pb8AvM="
