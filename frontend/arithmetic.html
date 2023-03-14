@@ -190,7 +190,7 @@
     <div id="expression" style="font-size: 26px;"></div>
     <input class="value" type="text" id="answer" onkeypress="if (event.keyCode == 13) submitAnswer();"/>
     <button onclick="submitAnswer()" style="margin-top: 10px;">Submit</button>
-    <button id="sendButton" onclick="saveResults()" hidden style="background: cornflowerblue">Save Results</button>
+    <button id="sendButton" onclick="saveResults(duration, fails)" hidden style="background: cornflowerblue">Save Results</button>
     <div id="infoArith" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeInfo()">&times;</span>
@@ -205,7 +205,7 @@
             <p>Вы увидите за какое время и с каким числом ошибок вам удалось выполнить упражнение.</p>
             <p>После сохранения результатов страница обновиться, и вы сможете снова пройти упражнение. Однако, мы
                 рекомендуем выполнять упражнения только ОДИН раз в день.</p>
-            <p></p>
+            <p>После завершения упражнения нажмите на вашем браузере стрелку влево, чтобы попасть на главную страницу</p>
             <p></p>
             <div>
                 Общая цель: Сокращение времени и количества ошибок при выполнении упражнения.

@@ -1,6 +1,6 @@
 HELP.md
 
-*.exe
+!*.exe
 target/
 .mvn/
 !**/src/main/**/target/
