@@ -28,26 +28,26 @@
     }
 
     /* Styling for the modal window */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.4);
-    }
+    /*.modal {*/
+    /*    display: none;*/
+    /*    position: fixed;*/
+    /*    z-index: 1;*/
+    /*    left: 0;*/
+    /*    top: 0;*/
+    /*    width: 100%;*/
+    /*    height: 100%;*/
+    /*    overflow: auto;*/
+    /*    background-color: rgba(0,0,0,0.4);*/
+    /*}*/
 
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        text-align: center;
-    }
+    /*.modal-content {*/
+    /*    background-color: #fefefe;*/
+    /*    margin: 15% auto;*/
+    /*    padding: 20px;*/
+    /*    border: 1px solid #888;*/
+    /*    width: 80%;*/
+    /*    text-align: center;*/
+    /*}*/
 </style>
 <body>
 
@@ -58,7 +58,7 @@
             <h3 class="me-2" id="logUserName">Hello, </h3>
         </div>
         <div class="fixed-top d-flex justify-content-end">
-            <button type="button" id="infoButton" data-toggle="modal" onclick="openInfo()"
+            <button type="button" id="infoButton" data-toggle="modal" data-target="#info"
                     style="background: cornflowerblue">Info
             </button>
             <button type="button" id="loginButton" data-toggle="modal" data-target="#loginModal"
@@ -160,21 +160,38 @@
         </div>
     </div>
 
-    <div id="info" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <p>На этом ресурсе вы можете тренировать ваши навыки мышления: концентрация внимения и запоминание информации.</p>
-            <p>После регистрации вы сможете начать занятия: на экране появяться кнопки с названиями упражнений.</p>
-            <p>Нажав на каждую кнопку, вы попадаете на страницу с упражнением. Порядок выполнения каждого упражнения вы узнаете после нажатия на кнопку Info</p>
-            <p>Для начала занятий вам необходимо зарегистрироваться: нажмите на кнопку Reg In и укажите электронную почту (Email), ваше имя (Name) и дважды введите пароль (Password и Confirm Password).</p>
-            <p>После заполнения всех полей нажмите на кнопку Register (Зарегистрировать)</p>
-            <p>Форма исчезнет и теперь вы сможете войти в систему для занятий.</p>
-            <p>Нажмите на кнопку Log In и в появившемся окне заполните поля Email  и Password данными, которые ввели при Регистрации.</p>
-            <p>Если данные введены корректно, то Форма входа (Log In) исчезнет и под пригласительной надписью Welcom to …. появяться кнопки для перехода на странице с упражнениями.</p>
-            <p>Если вы уже ранее заходили на сайт и сохраняли результаты ваших упражнений, то вы увидите графики, которые отражают время на выполнение упражнений (шкала слева - Seconds for test) и количественные результаты (шкала справа)</p>
-            <p>Как правило, система сохраняет историю ваших посещений и, когда вы заходите каждый раз с прежднего устройства, то ввод данных электронной почты и пароля не требуется.</p>
-            <p>Зачем нужна регистрация и можно ли обойтись без нее? Регистрация нужна прежде всего для того, чтобы вы смогли сохранить результаты в хранилище данных и со временем оценить динамику развития навыков.</p>
-            <button onclick="closeModal()">Close</button>
+    <div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="regModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="regInfoLabel">Information</h5>
+                    <p>На этом ресурсе вы можете тренировать ваши навыки мышления: концентрация внимения и
+                        запоминание информации.</p>
+                    <p>После регистрации вы сможете начать занятия: на экране появяться кнопки с названиями
+                        упражнений. Нажав на каждую кнопку, вы попадаете на страницу с упражнением. Порядок выполнения
+                        каждого
+                        упражнения вы узнаете после нажатия на кнопку Info</p>
+                    <p>Для начала занятий вам необходимо зарегистрироваться: нажмите на кнопку Reg In и укажите
+                        электронную почту (Email), ваше имя (Name) и дважды введите пароль (Password и Confirm
+                        Password).После заполнения всех полей нажмите на кнопку Register (Зарегистрировать)</p>
+                    <p>Форма исчезнет и теперь вы сможете войти в систему для занятий.</p>
+                    <p>Нажмите на кнопку Log In и в появившемся окне заполните поля Email и Password данными,
+                        которые ввели при Регистрации.</p>
+                    <p>Если данные введены корректно, то Форма входа (Log In) исчезнет и под пригласительной
+                        надписью Welcome to the Majkl's Brain Training. Появятся кнопки для перехода на странице с
+                        упражнениями.</p>
+                    <p>Если вы уже ранее заходили на сайт и сохраняли результаты ваших упражнений, то вы увидите
+                        графики, которые отражают время на выполнение упражнений (шкала слева - Seconds for test) и
+                        количественные результаты (шкала справа)</p>
+                    <p>Как правило, система сохраняет историю ваших посещений и, когда вы заходите каждый раз с
+                        прежнего устройства, то ввод данных электронной почты и пароля не требуется.</p>
+                    <p>Зачем нужна регистрация и можно ли обойтись без нее? Регистрация нужна прежде всего для того,
+                        чтобы вы смогли сохранить результаты в хранилище данных и со временем оценить динамику
+                        развития навыков.</p>
+                    <p>Щелкните мышкой на сером фоне вне данного сообщения, чтобы продолжить</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -189,17 +206,7 @@
 <div id="myMem"></div>
 
 </body>
-<script>
-    // Function to open the info window
-    function openInfo() {
-        document.getElementById("info").style.display = "block";
-    }
 
-    // Function to close the info window
-    function closeModal() {
-        document.getElementById("info").style.display = "none";
-    }
-</script>
 <script>
     if (document.cookie.includes("brainTrainApp")) {
         document.getElementById("toShultePage").hidden = false
@@ -303,204 +310,204 @@
         location.reload();
     });
 </script>
-<script>
-    let results = [];
-    let groupedResults;
-    fetch("/private/display", {
-        method: "GET"
-    }).then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+<script> //Charts for results
+let results = [];
+let groupedResults;
+fetch("/private/display", {
+    method: "GET"
+}).then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+}).then(data => {
+    results = data;
+    // do something with results here
+    groupedResults = results.reduce((acc, res) => {
+        if (!acc[res.test_id]) {
+            acc[res.test_id] = [];
         }
-        return response.json();
-    }).then(data => {
-        results = data;
-        // do something with results here
-        groupedResults = results.reduce((acc, res) => {
-            if (!acc[res.test_id]) {
-                acc[res.test_id] = [];
-            }
-            acc[res.test_id].push(res);
-            return acc;
-        }, {});
+        acc[res.test_id].push(res);
+        return acc;
+    }, {});
 
-        chartsShulte(groupedResults);
+    chartsShulte(groupedResults);
 
-        chartsArithmetic(groupedResults);
+    chartsArithmetic(groupedResults);
 
-        chartsMemorize(groupedResults)
-    }).catch(error => {
-        console.error('Error:', error);
+    chartsMemorize(groupedResults)
+}).catch(error => {
+    console.error('Error:', error);
 
+});
+
+function chartsShulte(groupedResults) {
+    const testId = 1;
+    const filteredResults = groupedResults[testId].filter(res => res.results !== null);
+
+    const dataByDate = {};
+    filteredResults.forEach(res => {
+        const dateString = new Date(res.date_test.replace(' ', 'T')).toDateString();
+        if (!dataByDate[dateString]) {
+            dataByDate[dateString] = [];
+        }
+        const resultsArray = res.results.split(' ').map(time => {
+            const [minutes, seconds] = time.split(':');
+            return (parseInt(minutes) * 60) + parseInt(seconds);
+        });
+        dataByDate[dateString].push(resultsArray);
     });
 
-    function chartsShulte(groupedResults) {
-        const testId = 1;
-        const filteredResults = groupedResults[testId].filter(res => res.results !== null);
+    const traces = [];
+    for (const dateString in dataByDate) {
+        const resultsArray = dataByDate[dateString];
+        const trace = {
+            y: resultsArray.flat(),
+            type: 'box',
+            name: dateString
+        };
+        traces.push(trace);
+    }
 
-        const dataByDate = {};
-        filteredResults.forEach(res => {
-            const dateString = new Date(res.date_test.replace(' ', 'T')).toDateString();
-            if (!dataByDate[dateString]) {
-                dataByDate[dateString] = [];
-            }
-            const resultsArray = res.results.split(' ').map(time => {
-                const [minutes, seconds] = time.split(':');
-                return (parseInt(minutes) * 60) + parseInt(seconds);
-            });
-            dataByDate[dateString].push(resultsArray);
-        });
+    const layout = {
+        title: "Diagram Test of Shulte's Tables",
+        yaxis: {
+            title: 'Second for test'
+        }
+    }
 
-        const traces = [];
-        for (const dateString in dataByDate) {
-            const resultsArray = dataByDate[dateString];
-            const trace = {
-                y: resultsArray.flat(),
-                type: 'box',
-                name: dateString
-            };
-            traces.push(trace);
+    Plotly.newPlot('myDiv', traces, layout);
+}
+
+function chartsArithmetic(groupedResults) {
+    const testId = 2;
+    const filteredResults = groupedResults[testId].filter(res => res.results !== null);
+    const dataByDate = {};
+    const xValues = [];
+    const y1Values = [];
+    const y2Values = [];
+    var resultFail;
+    var expressions;
+    filteredResults.forEach(res => {
+        const dateString = new Date(res.date_test.replace(' ', 'T')).toDateString();
+        if (!dataByDate[dateString]) {
+            dataByDate[dateString] = [];
         }
 
-        const layout ={
-            title: "Diagram Test of Shulte's Tables",
-            yaxis:{
-                title: 'Second for test'
-            }
+        xValues.push(dateString);
+
+        y1Values.push(res.result_inter);
+
+        resultFail = res.result_one;
+        expressions = res.result_two;
+
+        y2Values.push(Math.round(resultFail / expressions * 100));
+    });
+
+
+    const trace1 = {
+        x: xValues,
+        y: y1Values,
+        type: 'scatter',
+        name: 'Seconds for test',
+        yaxis: 'y1' // use y1 axis
+    };
+
+
+    const trace2 = {
+        x: xValues,
+        y: y2Values,
+        type: 'scatter',
+        name: '% of fails',
+        yaxis: 'y2' // use y2 axis
+    };
+
+    const layout = {
+        title: 'Diagram Test of Arithmetic',
+        yaxis: {
+            title: 'Seconds for test',
+            titlefont: {color: 'blue'},
+            tickfont: {color: 'blue'}
+        },
+        yaxis2: {
+            title: '% of fails',
+            titlefont: {color: 'orange'},
+            tickfont: {color: 'orange'},
+            overlaying: 'y', // align with y axis
+            side: 'right' // position on the right
+        }
+    };
+
+    const data = [trace1, trace2];
+
+    Plotly.newPlot('myAri', data, layout);
+}
+
+function chartsMemorize(groupedResults) {
+    const testId = 3;
+    const filteredResults = groupedResults[testId].filter(res => res.results !== null);
+    const dataByDate = {};
+    const xValues = [];
+    const y1Values = [];
+    const y2Values = [];
+    var resultFail;
+    var expressions;
+    filteredResults.forEach(res => {
+        const dateString = new Date(res.date_test.replace(' ', 'T')).toDateString();
+        if (!dataByDate[dateString]) {
+            dataByDate[dateString] = [];
         }
 
-        Plotly.newPlot('myDiv', traces, layout);
-    }
+        xValues.push(dateString);
 
-    function chartsArithmetic(groupedResults) {
-        const testId = 2;
-        const filteredResults = groupedResults[testId].filter(res => res.results !== null);
-        const dataByDate = {};
-        const xValues = [];
-        const y1Values = [];
-        const y2Values = [];
-        var resultFail;
-        var expressions;
-        filteredResults.forEach(res => {
-            const dateString = new Date(res.date_test.replace(' ', 'T')).toDateString();
-            if (!dataByDate[dateString]) {
-                dataByDate[dateString] = [];
-            }
+        y1Values.push(res.result_inter);
 
-            xValues.push(dateString);
-
-            y1Values.push(res.result_inter);
-
-            resultFail = res.result_one;
-            expressions = res.result_two;
-
-            y2Values.push(Math.round(resultFail/expressions*100));
-        });
+        y2Values.push(res.result_one);
+    });
 
 
-        const trace1 = {
-            x: xValues,
-            y: y1Values,
-            type: 'scatter',
-            name: 'Seconds for test',
-            yaxis: 'y1' // use y1 axis
-        };
+    const trace1 = {
+        x: xValues,
+        y: y1Values,
+        type: 'scatter',
+        name: 'Seconds for test',
+        yaxis: 'y1', // use y1 axis
+        marker: {
+            color: 'green'
+        }
+    };
 
 
-        const trace2 = {
-            x: xValues,
-            y: y2Values,
-            type: 'scatter',
-            name: '% of fails',
-            yaxis: 'y2' // use y2 axis
-        };
+    const trace2 = {
+        x: xValues,
+        y: y2Values,
+        type: 'scatter',
+        name: 'Amount of memorized words',
+        yaxis: 'y2',// use y2 axis
+        marker: {
+            color: 'violet'
+        }
+    };
 
-        const layout = {
-            title: 'Diagram Test of Arithmetic',
-            yaxis: {
-                title: 'Seconds for test',
-                titlefont: {color: 'blue'},
-                tickfont: {color: 'blue'}
-            },
-            yaxis2: {
-                title: '% of fails',
-                titlefont: {color: 'orange'},
-                tickfont: {color: 'orange'},
-                overlaying: 'y', // align with y axis
-                side: 'right' // position on the right
-            }
-        };
+    const layout = {
+        title: 'Diagram Test of Memorize',
+        yaxis: {
+            title: 'Seconds for test',
+            titlefont: {color: 'green'},
+            tickfont: {color: 'green'},
+        },
+        yaxis2: {
+            title: 'Amount of memorized words',
+            titlefont: {color: 'violet'},
+            tickfont: {color: 'violet'},
+            overlaying: 'y', // align with y axis
+            side: 'right' // position on the right
+        }
+    };
 
-        const data = [trace1, trace2];
+    const data = [trace1, trace2];
 
-        Plotly.newPlot('myAri', data, layout);
-    }
-
-    function chartsMemorize(groupedResults) {
-        const testId = 3;
-        const filteredResults = groupedResults[testId].filter(res => res.results !== null);
-        const dataByDate = {};
-        const xValues = [];
-        const y1Values = [];
-        const y2Values = [];
-        var resultFail;
-        var expressions;
-        filteredResults.forEach(res => {
-            const dateString = new Date(res.date_test.replace(' ', 'T')).toDateString();
-            if (!dataByDate[dateString]) {
-                dataByDate[dateString] = [];
-            }
-
-            xValues.push(dateString);
-
-            y1Values.push(res.result_inter);
-
-            y2Values.push(res.result_one);
-        });
-
-
-        const trace1 = {
-            x: xValues,
-            y: y1Values,
-            type: 'scatter',
-            name: 'Seconds for test',
-            yaxis: 'y1', // use y1 axis
-            marker:{
-                color:'green'
-            }
-        };
-
-
-        const trace2 = {
-            x: xValues,
-            y: y2Values,
-            type: 'scatter',
-            name: 'Amount of memorized words',
-            yaxis: 'y2',// use y2 axis
-            marker:{
-                color:'violet'
-            }
-        };
-
-        const layout = {
-            title: 'Diagram Test of Memorize',
-            yaxis: {
-                title: 'Seconds for test',
-                titlefont: {color: 'green'},
-                tickfont: {color: 'green'},
-            },
-            yaxis2: {
-                title: 'Amount of memorized words',
-                titlefont: {color: 'violet'},
-                tickfont: {color: 'violet'},
-                overlaying: 'y', // align with y axis
-                side: 'right' // position on the right
-            }
-        };
-
-        const data = [trace1, trace2];
-
-        Plotly.newPlot('myMem', data, layout);
-    }
+    Plotly.newPlot('myMem', data, layout);
+}
 </script>
 </html>
