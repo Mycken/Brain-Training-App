@@ -1,65 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Memorize Words</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        /*.hidden {*/
+        /*    display: none;*/
+        /*}*/
+
+        button {
+            background-color: darkorange;
+            color: black;
+            font-size: 16px;
+            font-family: Tahoma;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+        }
+
+        .label {
+            grid-column: 1;
+            font-weight: bold;
+            font-family: Tahoma;
+        }
+
+        .value {
+            color: darkslategray;
+            font-family: Tahoma;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        #timer {
+            position: absolute;
+            /*top: 50%;*/
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        /* Styling for the modal window */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: center;
+            font-family: Tahoma;
+        }
+
+        div {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-<h1 >Memorize Words</h1>
-<style>
-    /*.hidden {*/
-    /*    display: none;*/
-    /*}*/
+<div>
+    <h1 >Memorize Words</h1>
+</div>
 
-    button {
-        background-color: darkorange;
-        color: black;
-        font-size: 16px;
-        font-family: Tahoma;
-        font-weight: bold;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
 
-    .grid-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 10px;
-    }
-
-    .label {
-        grid-column: 1;
-        font-weight: bold;
-        font-family: Tahoma;
-    }
-
-    .value {
-        color: darkslategray;
-        font-family: Tahoma;
-        font-size: 18px;
-        font-weight: bold;
-        padding: 10px;
-        text-align: center;
-        background-color: #f2f2f2;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-    }
-
-    #timer {
-        position: absolute;
-        /*top: 50%;*/
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-</style>
+<div>
+    <button type="button" id="infoButton" data-toggle="modal" onclick="openInfo()"
+            style="background: cornflowerblue">Info
+    </button>
+</div>
+<br>
 <div id="starter">
+
     <button id="start-button" onclick="startTest()">START</button>
     <br>
     <br>
@@ -92,8 +130,47 @@
     <button id="save-result" onclick="saveResult()" style="background: cornflowerblue">Save Result</button>
 
 </div>
+<div id="infoMemo" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeInfo()">&times;</span>
+        <p>На странице Memorize (Запоминание) вы тренируете вашу способность фокусироваться на элементах списка слов.</p>
+        <p>Упражнение начинается после нажатия на кнопку СТАРТ (START)</p>
+        <p>После этого перед вами появится список из 20 слов. По истечении 2 минут список слов исчезнет и вам
+            нужно будет воспроизвести по памяти его содержание, разделяя слова пробелами. ВАЖНО! Порядок слов в ответе не влияет на итоговый результат</p>
+        <p>Когда вы считаете, что не можете вспомнить больше никаких слов, нужно подтвердить ответ, и система покажет ваш результат.
+            Вам будет доступна кнопка для сохранения результатов. В качестве результатов помимо затраченного времени и количество верно воспроизведенных слов из списка,
+        будут сохранены как правильные ответы, так и сам изначальный набор слов.</p>
+        <p>Для успешного выполнения упражнения старайтесь действовать последовательно и с предельной концентрацией.
+        Прочитав одно слово, постарайтесь сформировать его визуальный образ. Не переходите к следующему слову, пока не увидите картинку-образ текущего слова.</p>
+        <p>Не тратьте много времени на проработку и "разглядывание" образа. Общее время упражнения - 120 секунд, Общее количество слов - 20. Таким образом, на запоминание каждого слова вам
+        понадобиться 6 секунд. За 3 секунды можно без труда вызвать образ, как-то связанный с данным словом. Если этого не получилось, тогда вам стоит уделить отдельное внимание на
+        тренировку генерации образов, а в этом упражнении просто переходите к следующему слову.</p>
+        <p>После того как образ вызван за 3 секунды, потратьте еще 2 сек для того, чтобы связать текущий образ с предыдущим через любую пару воображаемых деталей.
+        Можете мысленно считать "раз-и-два-и". </p>
+        <p>Теперь у вас остается еще 1 секунда для переключения внимания на следующее слово.</p>
+        <p>Выполняйте по цепочке от слова к слову один и тот же набор операций: вызов образа, связывание деталей, переключение. По времени: 3 - 2 - 1.
+        Как только у вас получится сохранять данную ритмику выполнения, вы окажетесь на верном пути к улучшению ваших навыков запоминания.</p>
+        <p>После того, как список исчезнет и от вас потребуется воспроизвести его, постарайтесь вспомнить начало "истории" в виде связки начальных элементов образов.
+            Необязательно стремиться вспомнить первую пару, можете начать с любой, которая пришла. Тогда сначала двигайтесь вперёд, в потом "отматайте" с данного места назад.
+        Ограничений по времени воспоминания не существует. Вы затрачиваете столько времени, сколько считаете нужным. Здесь не нужно спешить, и данные параметр является больше справочным, чем
+        определяющим ваш прогресс.</p>
+        <p>После того, как увидите свои результаты, не спешите их сохранять. Постарайтесь изучить их, сопоставить с первоначальным списком и вспомнить, какие элементы связок у вас не сработали.
+        Такой анализ со временем приведет к тому, что мозг в следующий раз исключит их из набора и оставит только успешные техники запоминания-воспроизведения.</p>
+        <div>
+            Общая цель: Развить способность концентрации на текстовом материале и воспроизвести 20 слов изначального списка.
+        </div>
+        <button onclick="closeInfo()">Close</button>
+    </div>
+</div>
+<script>
+    function openInfo() {
+        document.getElementById("infoMemo").style.display = "block";
+    }
 
-
+    function closeInfo() {
+        document.getElementById("infoMemo").style.display = "none";
+    }
+</script>
 <script>
     window.onload = function () {
         document.getElementById("answer-form").style.display = "none";

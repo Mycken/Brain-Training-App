@@ -26,6 +26,28 @@
         font-weight: bold;
         font-family: Tahoma;
     }
+
+    /* Styling for the modal window */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        text-align: center;
+    }
 </style>
 <body>
 
@@ -36,6 +58,9 @@
             <h3 class="me-2" id="logUserName">Hello, </h3>
         </div>
         <div class="fixed-top d-flex justify-content-end">
+            <button type="button" id="infoButton" data-toggle="modal" onclick="openInfo()"
+                    style="background: cornflowerblue">Info
+            </button>
             <button type="button" id="loginButton" data-toggle="modal" data-target="#loginModal"
                     style="background: cornflowerblue">Log In
             </button>
@@ -134,6 +159,25 @@
             </div>
         </div>
     </div>
+
+    <div id="info" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <p>На этом ресурсе вы можете тренировать ваши навыки мышления: концентрация внимения и запоминание информации.</p>
+            <p>После регистрации вы сможете начать занятия: на экране появяться кнопки с названиями упражнений.</p>
+            <p>Нажав на каждую кнопку, вы попадаете на страницу с упражнением. Порядок выполнения каждого упражнения вы узнаете после нажатия на кнопку Info</p>
+            <p>Для начала занятий вам необходимо зарегистрироваться: нажмите на кнопку Reg In и укажите электронную почту (Email), ваше имя (Name) и дважды введите пароль (Password и Confirm Password).</p>
+            <p>После заполнения всех полей нажмите на кнопку Register (Зарегистрировать)</p>
+            <p>Форма исчезнет и теперь вы сможете войти в систему для занятий.</p>
+            <p>Нажмите на кнопку Log In и в появившемся окне заполните поля Email  и Password данными, которые ввели при Регистрации.</p>
+            <p>Если данные введены корректно, то Форма входа (Log In) исчезнет и под пригласительной надписью Welcom to …. появяться кнопки для перехода на странице с упражнениями.</p>
+            <p>Если вы уже ранее заходили на сайт и сохраняли результаты ваших упражнений, то вы увидите графики, которые отражают время на выполнение упражнений (шкала слева - Seconds for test) и количественные результаты (шкала справа)</p>
+            <p>Как правило, система сохраняет историю ваших посещений и, когда вы заходите каждый раз с прежднего устройства, то ввод данных электронной почты и пароля не требуется.</p>
+            <p>Зачем нужна регистрация и можно ли обойтись без нее? Регистрация нужна прежде всего для того, чтобы вы смогли сохранить результаты в хранилище данных и со временем оценить динамику развития навыков.</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
 </div>
 
 </div>
@@ -145,6 +189,17 @@
 <div id="myMem"></div>
 
 </body>
+<script>
+    // Function to open the info window
+    function openInfo() {
+        document.getElementById("info").style.display = "block";
+    }
+
+    // Function to close the info window
+    function closeModal() {
+        document.getElementById("info").style.display = "none";
+    }
+</script>
 <script>
     if (document.cookie.includes("brainTrainApp")) {
         document.getElementById("toShultePage").hidden = false

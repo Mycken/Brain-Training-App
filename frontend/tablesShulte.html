@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Table with Random Numbers</title>
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <style>
@@ -74,6 +75,28 @@
             justify-content: center;
             align-items: center;
         }
+        /* Styling for the modal window */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: center;
+            font-family: Tahoma;
+        }
     </style>
 </head>
 <body>
@@ -122,6 +145,9 @@
     </div>
     <div class="manage">
         <!-- HTML button element to start and stop the test -->
+        <button type="button" id="infoButton" data-toggle="modal" onclick="openInfo()"
+                style="background: cornflowerblue">Info
+        </button>
         <button id="startStopButton" onclick="startStopTest()">Start Test</button>
 
         <div class="grid-container">
@@ -136,7 +162,40 @@
         <button id="sendButton" onclick="sendResult()" hidden style="background: cornflowerblue">Save Results</button>
 
     </div>
+    <div id="infoShulte" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeInfo()">&times;</span>
+            <p>Перед вами квадратное поле с 25-ю ячейками, которое должно занимать весть экран по вертикали и не выходить за его пределы. Если поле выходит за пределы экрана или не является квадратным, тогда качественно выполнить тест не получится, и вам следует сообщить об этом в форме обратной связи.</p>
+            <p>После нажатия на кнопку Start Test (Начать Тест) это поле заполниться цифрами от 1 до 25</p>
+            <p>Цель упражнения - мысленно проследить весь порядок цифр начиная с 1 до 25. </p>
+            <p>Вам не нужно ни показывать на очередную цифру, ни проговаривать. Упражнение выполняется молча с предельной концентрацией на последовательности цифр.</p>
+            <p>После нажатия кнопки Start Test запускается таймер (Timer), а кнопка поменяет цвет и название на Stop Timer.</p>
+            <p>Не стоит убирать руку с мышкой после щелчка на кнопке - после того, как вы дойдете до 25 нажатие на той же кнопке остановит Таймер и в поле Test result появится результат упражнения. </p>
+            <p>Для полного прохождения упражнения вам необходимо повторить эти действия 5 раз(выполнить 5 подходов).</p>
+            <p>Каждый раз при нажатии на кнопку поле будет обновляться, а результат последнего подхода записываться в поле Общего результата Total result.</p>
+            <p>После 5-ого подхода появится кнопка Сохранения результата (Save). Нажмите на нее, чтобы результат остался в системе  и вы со временем смогли оценить динамику прогресса ваших когнитивных навыков. </p>
+            <p>Сохранение данных приведет к появлению всплывающего уведомления о том, что данные сохранены успешно, и страница обновиться.</p>
+            <p>Повторно проходить упражнение в этот день нежелательно. Рекомендуемый режим выполнения: 1 упражнение - 1 день. Реальные результаты (сокращение времени на выполнение) вы заметите через несколько дней.</p>
+            <div>
+                Общая цель: добиться прохождение каждого подхода за 25 секунд. Это будет означать, что ваша способность концентрироваться и удерживать внимание находится на высоком уровне.
+
+                Для успешного прохождения желательно держать внимание на центральном квадрате и искать очередную цифру периферическим зрением. Возможно, сначала у вас не будет получаться, но после нескольких дней тренировки, вы уже заметите, что можете удерживать взгляд в одной точке.
+            </div>
+            <button onclick="closeInfo()">Close</button>
+        </div>
+    </div>
 </div>
+<script>
+    // Function to open the info window
+    function openInfo() {
+        document.getElementById("infoShulte").style.display = "block";
+    }
+
+    // Function to close the info window
+    function closeInfo() {
+        document.getElementById("infoShulte").style.display = "none";
+    }
+</script>
 <script>
     let flag = 0;
     let count = 0;

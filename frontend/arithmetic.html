@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Arithmetic Expressions</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
@@ -31,10 +32,39 @@
             align-items: center;
         }
 
-        .label {
+        .label_rest {
             grid-column: 1;
-            font-weight: bold;
+            /*font-weight: bold;*/
             font-family: Tahoma;
+            font-size: 18px;
+        }
+
+        /* Styling for the modal window */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: center;
+            font-family: Tahoma;
+        }
+
+        div {
+            margin-left: 20px;
+            margin-top: 10px;
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -92,6 +122,7 @@
             document.getElementById("rest").innerHTML = "You're left to solve " + (totalExpressions - currentIndex).toString();
             if (currentIndex === 1) {
                 startTime = new Date();
+                document.getElementById("info_timer").innerHTML = "Timer's started";
             }
             if (parseInt(answer) === result) {
             } else {
@@ -103,9 +134,11 @@
             } else {
                 endTime = new Date();
                 duration = Math.floor((endTime - startTime) / 1000);
-                alert("Congratulations, you completed all expressions in " + duration + " seconds with " + fails + " failures.");
+                //alert("Congratulations, you completed all expressions in " +  + ");
+                document.getElementById("rest").innerHTML = "You've resolved " + (totalExpressions).toString() + " in " + duration + " seconds with " + fails + " failures.";
+                document.getElementById("sendButton").hidden = false;
                 // Save the results to the database using an AJAX call
-                saveResults(duration, fails)
+                // saveResults(duration, fails)
                 // location.reload();
             }
         }
@@ -138,17 +171,60 @@
                     }
                 })
             location.reload();
+            document.getElementById("sendButton").hidden = true
         }
     </script>
 
 
 </head>
 <body>
-<h1>Arithmetic Expressions</h1>
+<div>
+    <h1>Arithmetic Expressions</h1>
+    <button type="button" id="infoButton" data-toggle="modal" onclick="openInfo()"
+            style="background: cornflowerblue">Info
+    </button>
+    <br>
+    <div class="label_rest" id="rest"></div>
+    <br>
+    <div class="label_rest" id="info_timer" style="color: darkorange"></div>
+    <div id="expression" style="font-size: 26px;"></div>
+    <input class="value" type="text" id="answer" onkeypress="if (event.keyCode == 13) submitAnswer();"/>
+    <button onclick="submitAnswer()" style="margin-top: 10px;">Submit</button>
+    <button id="sendButton" onclick="saveResults()" hidden style="background: cornflowerblue">Save Results</button>
+    <div id="infoArith" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeInfo()">&times;</span>
+            <p>В этом упражнении вам предстоит написать ответы для 90 простых арифметических выражений</p>
+            <p>Сразу при переходе на страницу вы видите первое выражение. Однако, таймер еще не запущен.
+                Здесь нет отдельной кнопки, которая обозначает старт - время начнет учитываться сразу после того, как вы
+                введете первый ответ в серое поле и нажмете кнопку "Подтвердить" (Submit).</p>
+            <p>Появится надпись "Таймер запущен" (Timer's started)</p>
+            <p>Сразу под кнопкой Инфо (Info) вы можете смотреть сколько выражений осталось решить</p>
+            <p>Для этого упражнения нет фиксированного лимита времени. После того как все выражения будут решены,
+                система предложит записать результат выполнения упражнения к остальным вашим данным. </p>
+            <p>Вы увидите за какое время и с каким числом ошибок вам удалось выполнить упражнение.</p>
+            <p>После сохранения результатов страница обновиться, и вы сможете снова пройти упражнение. Однако, мы
+                рекомендуем выполнять упражнения только ОДИН раз в день.</p>
+            <p></p>
+            <p></p>
+            <div>
+                Общая цель: Сокращение времени и количества ошибок при выполнении упражнения.
+                Это тренирует вашу способность концентрировать и удерживать внимание.
+            </div>
+            <button onclick="closeInfo()">Close</button>
+        </div>
+    </div>
+</div>
+<script>
+    // Function to open the info window
+    function openInfo() {
+        document.getElementById("infoArith").style.display = "block";
+    }
 
-<div class="label" id="rest"></div>
-<div id="expression" style="font-size: 26px;"></div>
-<input class="value" type="text" id="answer" onkeypress="if (event.keyCode == 13) submitAnswer();"/>
-<button onclick="submitAnswer()">Submit</button>
+    // Function to close the info window
+    function closeInfo() {
+        document.getElementById("infoArith").style.display = "none";
+    }
+</script>
 </body>
 </html>
